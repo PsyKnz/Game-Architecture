@@ -130,4 +130,8 @@ public class GameScreen extends InputAdapter implements Screen, GameElement, Gam
 	public OrthographicCamera getCamera() {
 		return camera;
 	}
+	
+	public GameCore getGame() {
+		return game;
+	}
 }

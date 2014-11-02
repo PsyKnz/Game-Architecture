@@ -11,14 +11,18 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
  * @author Alex Crowther */
 public class GameCore extends Game {
 	
-	public AssetManager assets; // The asset manager used by the game to store all shared resources.
+	public final AssetManager assets; 				// The asset manager used by the game to store all shared resources.
+	public final GoogleServicesResolver services;	// Object allowing platform independent access to Google Play Services.
 	
-	@Override
-	public void create() {
-		// Creates a new AssetManager and configures it.
-		assets = new AssetManager();
+	public GameCore(GoogleServicesResolver services) {
+		this.services = services;		// Sets the GoogleServicesResolver this game uses.
+		
+		assets = new AssetManager();	// Initialises the AssetManager and sets all general loaders used in PsyKNZ games.
 		assets.setLoader(BitmapFont.class, ".ttf", new FreeTypeFontLoader(new InternalFileHandleResolver()));
 	}
+	
+	@Override
+	public void create() {}
 	
 	@Override
 	public void dispose() {
